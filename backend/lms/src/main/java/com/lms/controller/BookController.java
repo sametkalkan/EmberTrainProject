@@ -37,17 +37,25 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
+	@GetMapping("/books/category/{category}")
+	public List<Book> getBooksByCategory(@Valid @PathVariable("category") String category) {
+		return bookService.getBookByCategory(category);
+	}
+
+	@GetMapping("/books/title/{title}")
+	public List<Book> getBooksByTitle(@Valid @PathVariable("title") String title) {
+		return bookService.getBookByTitle(title);
+	}
 	
+	@GetMapping("/books/author/{author}")
+	public List<Book> getBooksByAuthor(@Valid @PathVariable("author") String author) {
+		return bookService.getBookByAuthor(author);
+	}
+
 	@GetMapping("/books/{id}")
 	public Book getBook(@Valid @PathVariable("id") UUID id) {
 		System.out.println("only request-------*-*-*-*-*");
 		return bookService.getByUuid(id);
-	}
-
-	@PostMapping(value = "/delete/{id}")
-	public void delete(@Valid @PathVariable("id") UUID id) {
-		System.out.println("delete" + id);
-		bookService.deleteById(id);
 	}
 
 	@DeleteMapping(value = "/delete/{id}")
@@ -56,9 +64,6 @@ public class BookController {
 		bookService.deleteById(id);
 	}
 
-	
-
-	
 	@GetMapping("books")
 	public List<Book> getAllBooks() {
 		System.out.println("geldi------------------");
@@ -74,8 +79,6 @@ public class BookController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void create(@RequestBody Book book) {
 		System.out.println("POST CREATE ******************");
-		String d = book.getPublishDate();
-		System.out.println(d);
 		book.setId(UUIDs.timeBased());
 		bookService.save(book);
 	}

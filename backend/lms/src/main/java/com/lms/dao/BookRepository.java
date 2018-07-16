@@ -13,17 +13,19 @@ import org.springframework.stereotype.Repository;
 import com.lms.model.Book;
 
 @Repository
-public interface BookRepository extends CassandraRepository<Book, UUID>{
+public interface BookRepository extends CassandraRepository<Book, UUID> {
 
-	
 	@Query("SELECT * FROM book")
 	List<Book> findAll();
-	
-	@Query("SELECT * FROM book id=:id")
-	Optional<Book> findById(@Param("id")UUID id);
-	
+
+	@Query("SELECT * FROM book WHERE id=:id")
+	Optional<Book> findById(@Param("id") UUID id);
+
 	@Query("SELECT * FROM book WHERE title=:title ALLOW FILTERING")
 	List<Book> findByTitle(@Param("title") String title);
+
+	@Query("SELECT * FROM book WHERE author=:author ALLOW FILTERING")
+	List<Book> findByAuthor(@Param("author") String author);
 
 	@Query("SELECT * FROM book WHERE publisher=:publisher ALLOW FILTERING")
 	List<Book> findByPublisher(@Param("title") String publisher);
@@ -40,8 +42,6 @@ public interface BookRepository extends CassandraRepository<Book, UUID>{
 	Optional<Book> findByIsbn(@Param("isbn") String isbn);
 
 	@Query("DELETE FROM book WHERE id=:id")
-	void deleteById(@Param("isbn") UUID id);
+	void deleteById(@Param("id") UUID id);
 
-
-	
 }

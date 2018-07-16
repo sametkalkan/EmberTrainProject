@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.Persistent;
@@ -58,10 +60,19 @@ public class BookService {
 	public List<Book> getBookByTitle(String title) {
 		return bookRepo.findByTitle(title);
 	}
+	
+	public List<Book> getBookByAuthor(String author) {
+		return bookRepo.findByAuthor(author);
+	}
+	public List<Book> getBookByCategory(String category) {
+		return bookRepo.findByCategory(category);
+	}
 
 	public List<Book> getBookByPublisher(String publisher) {
 		return bookRepo.findByPublisher(publisher);
 	}
+	
+	
 
 	// public List<Book> getBookByDate(Date date) {
 	// return bookRepo.findByPublishDate(date);
