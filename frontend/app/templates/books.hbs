@@ -1,0 +1,40 @@
+<h1> Books </h1>,
+<div class="panel panel-info">
+  <div class="panel-heading">Books
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <th>ISBN</th>
+          <th>TITLE</th>
+          <th>PUBLISHER</th>
+          <th>AUTHOR</th>
+          <th>CATEGORY</th>
+          <th>PUBLISH DATE</th>
+          <th>NUMBER OF PAGE</th>
+          <th>UPDATE</th>
+          <th>DELETE</th>
+
+        </tr>
+
+        {{#each model as |b|}}
+          <tr>
+            {{#link-to 'viewbook' b.id }}
+              <td> {{b.isbn}} </td>
+            {{/link-to}}
+            <td> {{b.title}}</td>
+            <td> {{b.publisher}}</td>
+            <td> {{b.author}}</td>
+            <td> {{b.category}}</td>
+            <td> {{b.publishDate}}</td>
+            <td> {{b.npage}}</td>
+            <td> <button type="button" class="btn btn-info" {{action "update" b.id}}>Update</button>  </td>
+            <td> <button type="button" class="btn btn-danger" {{action "delete" b.id}}>Delete</button>  </td>
+
+          </tr>
+        {{/each}}
+
+      </table>
+    </div>
+  </div>
+  <button type="button" class="btn btn-success" {{action "addBook"}}>Add New Book</button>
+</div>

@@ -1,0 +1,25 @@
+
+
+<div class="panel panel-success">
+  <div class="list-group">
+    <label type="button" class="list-group-item"><b>ISBN:</b> {{model.isbn}}</label>
+    <label type="button" class="list-group-item"><b>TITLE:</b> {{model.title}}</label>
+    <label type="button" class="list-group-item"><b>AUTHOR:</b> {{model.author}}</label>
+    <label type="button" class="list-group-item"><b>PUBLISHER:</b> {{model.publisher}}</label>
+    <label type="button" class="list-group-item"><b>DATE:</b> {{model.publishDate}}</label>
+    <label type="button" class="list-group-item"><b>#PAGE:</b> {{model.npage}}</label>
+  </div>
+  <div class="form-group">
+   <div class="col-sm-offset-2 col-sm-10">
+     {{#link-to 'update' model.id }}
+        <button class="btn btn-sm btn-primary">Update</button>
+     {{/link-to}}
+     {{#link-to 'update' model.id }}
+        <button {{action "delete" model}} class="btn btn-sm btn-primary">Delete</button>
+     {{/link-to}}
+   </div>
+  </div>
+</div>
+
+
+{{outlet}}

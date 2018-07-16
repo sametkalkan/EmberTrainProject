@@ -1,0 +1,50 @@
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="name" class="col-md-2 control-label">ISBN</label>
+    <div class="col-md-5">
+      {{input type="text" value=model.isbn class="form-control"}}
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-md-2 control-label">Title</label>
+    <div class="col-md-5">
+      {{input type="text" value=model.title class="form-control"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-md-2 control-label">Publisher</label>
+    <div class="col-md-5">
+      {{input type="text" value=model.publisher class="form-control"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-md-2 control-label">Author</label>
+    <div class="col-md-5">
+      {{input type="text" value=model.author class="form-control"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-md-2 control-label">Category</label>
+    <div class="col-md-5">
+      {{input type="text" value=model.category class="form-control"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-md-2 control-label">Publish Date</label>
+    <div class="col-md-5">
+      {{input type="text" value=model.publishDate class="form-control"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-md-2 control-label">Number Of Page</label>
+    <div class="col-md-5">
+      {{input type="text" value=model.npage class="form-control"}}
+    </div>
+  </div>
+  <div class="form-group">
+   <div class="col-sm-offset-2 col-sm-10">
+     <button {{action "update" model.id}} class="btn btn-sm btn-primary">Update</button>
+   </div>
+ </div>
+</form>
