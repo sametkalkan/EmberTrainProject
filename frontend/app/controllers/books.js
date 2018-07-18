@@ -34,8 +34,14 @@ export default Controller.extend({
 
       },
       sorgula(kriter){
+        var myURL = ""
+        if(kriter === "")
+          myURL = 'http://localhost:8080/books';
+        else {
+          myURL = 'http://localhost:8080/books/title' + kriter;
+        }
         Ember.$.ajax({
-          url:'http://localhost:8080/books/title/'+ kriter,
+          url:myURL,
           type:"GET",
           headers: {
               'Content-Type': 'application/json'

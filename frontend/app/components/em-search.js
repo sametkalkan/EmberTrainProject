@@ -4,7 +4,7 @@ import EmberObject from '@ember/object';
 export default Component.extend({
   query:"",
   actions: {
-    keyPres() {
+    keyPress() {
       console.log(this.get('query'));
       this.sendAction('sorgula', this.get('query'));
     }
