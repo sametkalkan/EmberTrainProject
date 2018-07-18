@@ -1,40 +1,23 @@
 
-<div class="panel panel-info">
-  <div class="panel-heading">Books
-    <div class="table-responsive">
-      <table class="table">
-        <tr>
-          <th>ISBN</th>
-          <th>TITLE</th>
-          <th>PUBLISHER</th>
-          <th>AUTHOR</th>
-          <th>CATEGORY</th>
-          <th>PUBLISH DATE</th>
-          <th>NUMBER OF PAGE</th>
-          <th>UPDATE</th>
-          <th>DELETE</th>
 
-        </tr>
-
-        {{#each model as |b|}}
-          <tr>
-            {{#link-to 'viewbook' b.id }}
-              <td> {{b.isbn}} </td>
-            {{/link-to}}
-            <td> {{b.title}}</td>
-            <td> {{b.publisher}}</td>
-            <td> {{b.author}}</td>
-            <td> {{b.category}}</td>
-            <td> {{b.publishDate}}</td>
-            <td> {{b.npage}}</td>
-            <td> <button type="button" class="btn btn-info" {{action "update" b.id}}>Update</button>  </td>
-            <td> <button type="button" class="btn btn-danger" {{action "delete" b.id}}>Delete</button>  </td>
-
-          </tr>
-        {{/each}}
-
-      </table>
-    </div>
+<div class="panel panel-success">
+  <div class="list-group">
+    <label type="button" class="list-group-item"><b>ISBN:</b> {{model.isbn}}</label>
+    <label type="button" class="list-group-item"><b>TITLE:</b> {{model.title}}</label>
+    <label type="button" class="list-group-item"><b>AUTHOR:</b> {{model.author}}</label>
+    <label type="button" class="list-group-item"><b>PUBLISHER:</b> {{model.publisher}}</label>
+    <label type="button" class="list-group-item"><b>DATE:</b> {{model.publishDate}}</label>
+    <label type="button" class="list-group-item"><b>#PAGE:</b> {{model.npage}}</label>
+  </div>
+  <div class="form-group">
+   <div class="col-sm-offset-2 col-sm-10">
+     {{#link-to 'update' model.id }}
+        <button class="btn btn-sm btn-primary">Update</button>
+     {{/link-to}}
+     {{#link-to 'update' model.id }}
+        <button {{action "delete" model}} class="btn btn-sm btn-primary">Delete</button>
+     {{/link-to}}
+   </div>
   </div>
 </div>
 

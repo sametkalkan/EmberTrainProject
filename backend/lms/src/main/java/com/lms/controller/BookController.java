@@ -77,10 +77,15 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public void create(@RequestBody Book book) {
+	public ResponseEntity<?> create(@RequestBody Book book) {
 		System.out.println("POST CREATE ******************");
+		List<Book> b = bookService.getBookByTitle(book.getTitle());
+		if(b.size()>0) {
+			return new ResponseEntity(new String("The title already exists."), HttpStatus.BAD_REQUEST);
+		}
 		book.setId(UUIDs.timeBased());
 		bookService.save(book);
+		return new ResponseEntity<String>(new String("New book has been created."), HttpStatus.CREATED);
 	}
 
 }

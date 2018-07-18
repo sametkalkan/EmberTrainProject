@@ -20,8 +20,12 @@ export default Controller.extend({
               'Content-Type': 'application/json'
             }
         }).then(function(resp){
+          console.log(resp);
           self.transitionToRoute("books");
         }).catch(function(error){
+          alert(error.responseText)
+          self.set("errorr", error.responseText);
+          console.log(self.get("errorr"));
           console.log("negative");
         });
     }

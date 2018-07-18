@@ -1,0 +1,41 @@
+{{yield}}
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">Books
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <th>ISBN</th>
+          <th>TITLE</th>
+          <th>PUBLISHER</th>
+          <th>AUTHOR</th>
+          <th>CATEGORY</th>
+          <th>PUBLISH DATE</th>
+          <th>NUMBER OF PAGE</th>
+          <th>UPDATE</th>
+          <th>DELETE</th>
+
+        </tr>
+
+        {{#each books as |book|}}
+          <tr>
+            {{#link-to 'viewbook' book.id }}
+              <td> {{book.isbn}} </td>
+            {{/link-to}}
+            <td> {{book.title}}</td>
+            <td> {{book.publisher}}</td>
+            <td> {{book.author}}</td>
+            <td> {{book.category}}</td>
+            <td> {{book.publishDate}}</td>
+            <td> {{book.npage}}</td>
+            <td> <button type="button" class="btn btn-info" {{action "updateBook" book.id}}>Update</button>  </td>
+            <td> <button type="button" class="btn btn-danger" {{action "deleteBook" book.id}}>Delete</button>  </td>
+          </tr>
+        {{/each}}
+
+      </table>
+    </div>
+  </div>
+
+</div>
