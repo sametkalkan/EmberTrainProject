@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+  errorMessage: undefined,
+
   actions:{
     add(){
       let self = this;
@@ -23,10 +25,7 @@ export default Controller.extend({
           console.log(resp);
           self.transitionToRoute("books");
         }).catch(function(error){
-          alert(error.responseText)
-          self.set("errorr", error.responseText);
-          console.log(self.get("errorr"));
-          console.log("negative");
+          self.set("errorMessage", error.responseText);
         });
     }
   }

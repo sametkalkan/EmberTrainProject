@@ -1,8 +1,10 @@
 import Controller from '@ember/controller';
+import EmberObject from '@ember/object';
 
 export default Controller.extend({
   queryParams: ['query'],
   query: '',
+  data:EmberObject.create(),
 
     actions: {
       addBook() {
@@ -30,6 +32,17 @@ export default Controller.extend({
             console.log("negative");
           });
 
+      },
+      sorgula(kriter){
+        Ember.$.ajax({
+          url:'http://localhost:8080/books/title/'+ kriter,
+          type:"GET",
+          headers: {
+              'Content-Type': 'application/json'
+            }
+        }).then((resp)=>{
+            this.set('data', resp);
+        })
       }
     }
 });

@@ -7,10 +7,4 @@ export default Route.extend({
     }
   },
 
-  model(){
-    //return this.get('ajax').request('http://localhost:8080/books');
-    return this.store.findAll('book');
-  },
-
-
 });

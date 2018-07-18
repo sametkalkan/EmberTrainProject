@@ -1,15 +1,12 @@
 import Component from '@ember/component';
+import EmberObject from '@ember/object';
 
 export default Component.extend({
-  ajax: Ember.inject.service(),
-
+  query:"",
   actions: {
     keyPres() {
-      var value = this.get('query');
-      var model = this.get('ajax').request('http://localhost:8080/books/title/' + value);
-      console.log(model);
-      this.set('filtered', model);
-
+      console.log(this.get('query'));
+      this.sendAction('sorgula', this.get('query'));
     }
   }
 });
