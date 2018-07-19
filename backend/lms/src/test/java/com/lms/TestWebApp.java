@@ -46,7 +46,6 @@ public class TestWebApp extends LmsApplicationTests {
 	@Test
 	public void testCreateBook() throws Exception {
 		Book newBook = new Book();
-		newBook.setId( UUIDs.timeBased() );
 		newBook.setAuthor("Omer sdasd");
 		newBook.setCategory("Story");
 		newBook.setIsbn("4562341239763");
@@ -66,7 +65,7 @@ public class TestWebApp extends LmsApplicationTests {
 	public void testUpdateBook() throws Exception {
 		
 		Book newBook = new Book();
-		newBook.setId( UUID.fromString("7a361ac0-88e3-11e8-aa82-2bf7b64c668a") );
+		newBook.setId( 1 );
 		newBook.setAuthor("Omer Seyfettin");
 		newBook.setCategory("Story");
 		newBook.setIsbn("4562341239763");

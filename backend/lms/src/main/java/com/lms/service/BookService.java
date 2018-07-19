@@ -2,7 +2,6 @@ package com.lms.service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -11,14 +10,15 @@ import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.Persistent;
 import org.springframework.stereotype.Service;
 
-import com.lms.dao.BookRepository;
+import com.lms.dao.BookRepositoryMySql;
 import com.lms.model.Book;
 
 @Service("bookservice")
 public class BookService {
 
 	@Autowired
-	private BookRepository bookRepo;
+	private BookRepositoryMySql bookRepo;
+	//private BookRepository bookRepo;
 	
 	
 	public void save(Book book) {
@@ -29,7 +29,7 @@ public class BookService {
 	}
 
 	/***** DELETE METHODS *****/
-	public void deleteById(UUID id) {
+	public void deleteById(int id) {
 		bookRepo.deleteById(id);
 	}
 
@@ -45,7 +45,7 @@ public class BookService {
 		return bookRepo.findAll();
 	}
 
-	public Book getByUuid(UUID id) {
+	public Book getById(int id) {
 		return bookRepo.existsById(id) ? bookRepo.findById(id).get() : null;
 	}
 	
@@ -58,18 +58,18 @@ public class BookService {
 	}
 
 	public List<Book> getBookByTitle(String title) {
-		return bookRepo.findByTitle(title);
+		return bookRepo.findByTitleContaining(title);
 	}
 	
 	public List<Book> getBookByAuthor(String author) {
-		return bookRepo.findByAuthor(author);
+		return bookRepo.findByAuthorContaining(author);
 	}
 	public List<Book> getBookByCategory(String category) {
-		return bookRepo.findByCategory(category);
+		return bookRepo.findByCategoryContaining(category);
 	}
 
 	public List<Book> getBookByPublisher(String publisher) {
-		return bookRepo.findByPublisher(publisher);
+		return bookRepo.findByPublisherContaining(publisher);
 	}
 	
 	

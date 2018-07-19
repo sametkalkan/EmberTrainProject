@@ -1,26 +1,19 @@
 package com.lms.model;
 
-import java.io.Serializable;
-import java.util.Date;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
-
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
-
-import com.datastax.driver.core.LocalDate;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-@Table("book")
+@Entity
 public class Book {
 
-	@PrimaryKey
-	private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
-	@Size(min=10, max=16)
 	private String isbn;
 	private String title;
 	private String author;
@@ -33,7 +26,7 @@ public class Book {
 
 	}
 
-	public Book(UUID id, String isbn, String title, String author, String publisher, String category,
+	public Book(int id, String isbn, String title, String author, String publisher, String category,
 			String publishDate, int npage) {
 		super();
 		this.id = id;
@@ -62,11 +55,11 @@ public class Book {
 		this.category = category;
 	}
 
-	public UUID getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

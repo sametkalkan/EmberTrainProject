@@ -2,7 +2,6 @@ package com.lms.controller;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.valueextraction.UnwrapByDefault;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.datastax.driver.core.LocalDate;
-import com.datastax.driver.core.utils.UUIDs;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lms.model.Book;
 import com.lms.service.BookService;
@@ -53,13 +51,13 @@ public class BookController {
 	}
 
 	@GetMapping("/books/{id}")
-	public Book getBook(@Valid @PathVariable("id") UUID id) {
+	public Book getBook(@Valid @PathVariable("id") int id) {
 		System.out.println("only request-------*-*-*-*-*");
-		return bookService.getByUuid(id);
+		return bookService.getById(id);
 	}
 
 	@DeleteMapping(value = "/delete/{id}")
-	public void deletee(@Valid @PathVariable("id") UUID id) {
+	public void deletee(@Valid @PathVariable("id") int id) {
 		System.out.println("delet-**********************************************e" + id);
 		bookService.deleteById(id);
 	}
@@ -83,7 +81,6 @@ public class BookController {
 		if(b.size()>0) {
 			return new ResponseEntity(new String("The title already exists."), HttpStatus.BAD_REQUEST);
 		}
-		book.setId(UUIDs.timeBased());
 		bookService.save(book);
 		return new ResponseEntity<String>(new String("New book has been created."), HttpStatus.CREATED);
 	}
