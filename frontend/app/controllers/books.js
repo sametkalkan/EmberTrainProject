@@ -2,20 +2,27 @@ import Controller from '@ember/controller';
 import EmberObject from '@ember/object';
 
 export default Controller.extend({
-  queryParams: ['query'],
-  query: '',
-  data:EmberObject.create(),
+    queryParams: ['query'],
+    query: '',
+    data:EmberObject.create(),
 
+    init(){
+      console.log("init");
+      this.set('data', this.send('sorgula', ''));
+    },
+    
     actions: {
       addBook() {
         let self = this;
         self.transitionToRoute("addbook");
       },
+
       update(id) {
         console.log(id+"***");
         let self = this;
         self.transitionToRoute("/update/" + id);
       },
+
       delete(id) {
         let self = this;
         Ember.$.ajax({
@@ -34,11 +41,12 @@ export default Controller.extend({
 
       },
       sorgula(kriter){
+        console.log(kriter);
         var myURL = ""
         if(kriter === "")
           myURL = 'http://localhost:8080/books';
         else {
-          myURL = 'http://localhost:8080/books/title' + kriter;
+          myURL = 'http://localhost:8080/books/title/' + kriter;
         }
         Ember.$.ajax({
           url:myURL,

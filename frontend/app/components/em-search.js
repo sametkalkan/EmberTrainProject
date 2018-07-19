@@ -5,7 +5,7 @@ export default Component.extend({
   query:"",
   actions: {
     keyPress() {
-      console.log(this.get('query'));
+      console.log("keyPress");
       this.sendAction('sorgula', this.get('query'));
     }
   }
