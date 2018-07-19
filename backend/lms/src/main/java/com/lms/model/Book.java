@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
+
 @Entity
 public class Book {
 
@@ -26,8 +26,8 @@ public class Book {
 
 	}
 
-	public Book(int id, String isbn, String title, String author, String publisher, String category,
-			String publishDate, int npage) {
+	public Book(int id, String isbn, String title, String author, String publisher, String category, String publishDate,
+			int npage) {
 		super();
 		this.id = id;
 		this.isbn = isbn;

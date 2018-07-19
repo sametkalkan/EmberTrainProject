@@ -2,7 +2,7 @@
 
 
 <div class="panel panel-info">
-  <div class="panel-heading">Books
+  <div class="panel-heading">
     <div class="table-responsive">
       <table class="table">
         <tr>
@@ -30,7 +30,7 @@
             <td> {{book.publishDate}}</td>
             <td> {{book.npage}}</td>
             <td> <button type="button" class="btn btn-info" {{action "updateBook" book.id}}>Update</button>  </td>
-            <td> <button type="button" class="btn btn-danger" {{action "deleteBook" book.id}}>Delete</button>  </td>
+            <td> <button type="button" class="btn btn-danger" {{action "deleteBook" book}}>Delete</button>  </td>
           </tr>
         {{/each}}
 

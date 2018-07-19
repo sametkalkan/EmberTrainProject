@@ -5,7 +5,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -16,10 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.datastax.driver.core.utils.UUIDs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lms.model.Book;
 import com.lms.service.BookService;
@@ -46,11 +43,11 @@ public class TestWebApp extends LmsApplicationTests {
 	@Test
 	public void testCreateBook() throws Exception {
 		Book newBook = new Book();
-		newBook.setAuthor("Omer sdasd");
+		newBook.setAuthor("Omer");
 		newBook.setCategory("Story");
 		newBook.setIsbn("4562341239763");
 		newBook.setNpage(452);
-		newBook.setPublishDate("1999.07.07");
+		newBook.setPublishDate("1999-07-07");
 		newBook.setPublisher("Dost");
 		newBook.setTitle("Harry Potter and the prisoner of Azkaban");
 		
@@ -70,7 +67,7 @@ public class TestWebApp extends LmsApplicationTests {
 		newBook.setCategory("Story");
 		newBook.setIsbn("4562341239763");
 		newBook.setNpage(452);
-		newBook.setPublishDate("1999.07.07");
+		newBook.setPublishDate("1999-07-07");
 		newBook.setPublisher("Dost");
 		newBook.setTitle("Perili Kosk");
 		

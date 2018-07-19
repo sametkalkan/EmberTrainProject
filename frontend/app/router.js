@@ -15,7 +15,6 @@ Router.map(function() {
   this.route('update', { path: "update/:id" });
   this.route('home');
   this.route('contact');
-  this.route('about');
 });
 
 export default Router;

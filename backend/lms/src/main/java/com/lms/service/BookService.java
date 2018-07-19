@@ -1,13 +1,9 @@
 package com.lms.service;
 
-import java.util.Date;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.annotation.Persistent;
 import org.springframework.stereotype.Service;
 
 import com.lms.dao.BookRepositoryMySql;
@@ -18,12 +14,12 @@ public class BookService {
 
 	@Autowired
 	private BookRepositoryMySql bookRepo;
-	//private BookRepository bookRepo;
-	
-	
+	// private BookRepository bookRepo;
+
 	public void save(Book book) {
 		bookRepo.save(book);
 	}
+
 	public void update(Book book) {
 		save(book);
 	}
@@ -48,7 +44,7 @@ public class BookService {
 	public Book getById(int id) {
 		return bookRepo.existsById(id) ? bookRepo.findById(id).get() : null;
 	}
-	
+
 	public List<Book> getByCategory(String category) {
 		return bookRepo.findByCategory(category);
 	}
@@ -60,10 +56,11 @@ public class BookService {
 	public List<Book> getBookByTitle(String title) {
 		return bookRepo.findByTitleContaining(title);
 	}
-	
+
 	public List<Book> getBookByAuthor(String author) {
 		return bookRepo.findByAuthorContaining(author);
 	}
+
 	public List<Book> getBookByCategory(String category) {
 		return bookRepo.findByCategoryContaining(category);
 	}
@@ -71,12 +68,5 @@ public class BookService {
 	public List<Book> getBookByPublisher(String publisher) {
 		return bookRepo.findByPublisherContaining(publisher);
 	}
-	
-	
-
-	// public List<Book> getBookByDate(Date date) {
-	// return bookRepo.findByPublishDate(date);
-	// }
-	/***************************/
 
 }

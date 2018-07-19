@@ -1,8 +1,15 @@
 {{yield}}
 
-<div class="col-sm-6">
-        {{input type="search"
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="form-inline">
+      {{input type="search"
+        class="form-control mr-sm-6"
+        placeholder="Search By Title"
+        aria-label="Search"
         value=query
         key-up="keyPress"
-        }}
-  </div>
+      }}
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </div>
+  </nav>

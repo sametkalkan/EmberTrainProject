@@ -1,50 +1,61 @@
+<br>
 <form class="form-horizontal">
     <div class="form-group">
-      <div class="form-row group">
+      <div class="form-row">
         <div class="col-md-5">
-          <label for="name" class="col-md-2 control-label">ISBN</label>
+          <label for="name" class="col-md-2 control-label"><strong>ISBN</strong></label>
           {{input type="text" value=isbn class="form-control"}}
         </div>
         <div class="col-md-5">
-          <label for="name" class="col-md-2 control-label">Title</label>
+          <label for="name" class="col-md-2 control-label"><strong>Title</strong></label>
           {{input type="text" value=title class="form-control"}}
         </div>
       </div>
-
+      <br>
       <div class="form-row">
         <div class="col-md-5">
-          <label for="name" class="col-md-2 control-label">Publisher</label>
+          <label for="name" class="col-md-2 control-label"><strong>Publisher</strong></label>
           {{input type="text" value=publisher class="form-control"}}
         </div>
         <div class="col-md-5">
-          <label for="name" class="col-md-2 control-label">Author</label>
+          <label for="name" class="col-md-2 control-label"><strong>Author</strong></label>
           {{input type="text" value=author class="form-control"}}
         </div>
       </div>
+      <br>
       <div class="form-row">
         <div class="col-md-5">
-          <label for="name" class="col-md-2 control-label">Category</label>
+          <label for="name" class="col-md-2 control-label"><strong>Category</strong></label>
           {{input type="text" value=category class="form-control"}}
         </div>
 
         <div class="col-md-5">
-          <label for="name" class="col-md-2 control-label">Publish Date</label>
+          <label for="name" class="col-md-4 control-label"><strong>Publish Date</strong></label>
           {{input type="date" value=publishDate class="form-control"}}
         </div>
       </div>
-      <div class="form-group">
-        <label for="name" class="col-md-2 control-label">Number Of Page</label>
+
+      <br>
+
+      <div class="form-row">
         <div class="col-md-5">
+          <label for="name" class="col-md-6 control-label"><strong>Number Of Page</strong></label>
           {{input type="text" value=npage class="form-control"}}
         </div>
+        {{#if errorMessage}}
+          <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+              <strong>Error: </strong> {{errorMessage}}
+          </div>
+        {{/if}}
       </div>
+      <br>
       <div class="form-group">
        <div class="col-sm-offset-2 col-sm-10">
-         <button {{action "add"}} class="btn btn-sm btn-primary">Add</button>
+         <button {{action "add"}} class="btn btn-sm btn-primary">Submit</button>
        </div>
      </div>
+
    </div>
 </form>
-{{#if errorMessage}}
-  {{errorMessage}}
-{{/if}}

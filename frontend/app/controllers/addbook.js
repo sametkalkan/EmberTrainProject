@@ -22,8 +22,7 @@ export default Controller.extend({
               'Content-Type': 'application/json'
             }
         }).then(function(resp){
-          console.log(resp);
-          self.transitionToRoute("books");
+          window.location.href = '/books'
         }).catch(function(error){
           self.set("errorMessage", error.responseText);
         });
