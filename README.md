@@ -1,7 +1,7 @@
-<h1> Library Management System <h1>
+Library Management System
   
   This project was developed during my internship in Tübitak Bilgem
-  <br>
+ 
   Used technologies:
   * Ember JS
   * Spring Boot
